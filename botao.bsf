@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 248 160)
+	(rect 16 16 256 192)
 	(text "botao" (rect 5 0 26 12)(font "Arial" ))
-	(text "inst" (rect 8 128 20 140)(font "Arial" ))
+	(text "inst" (rect 8 160 20 172)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -41,65 +41,72 @@ agreement for further details.
 	(port
 		(pt 0 64)
 		(input)
-		(text "mv" (rect 0 0 14 12)(font "Arial" ))
-		(text "mv" (rect 21 59 35 71)(font "Arial" ))
+		(text "mvE" (rect 0 0 21 12)(font "Arial" ))
+		(text "mvE" (rect 21 59 42 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 1))
 	)
 	(port
 		(pt 0 80)
 		(input)
-		(text "sel" (rect 0 0 10 12)(font "Arial" ))
-		(text "sel" (rect 21 75 31 87)(font "Arial" ))
+		(text "mvD" (rect 0 0 21 12)(font "Arial" ))
+		(text "mvD" (rect 21 75 42 87)(font "Arial" ))
 		(line (pt 0 80)(pt 16 80)(line_width 1))
 	)
 	(port
 		(pt 0 96)
 		(input)
-		(text "response_ctl[1..0]" (rect 0 0 69 12)(font "Arial" ))
-		(text "response_ctl[1..0]" (rect 21 91 90 103)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
+		(text "sel" (rect 0 0 10 12)(font "Arial" ))
+		(text "sel" (rect 21 91 31 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
 	)
 	(port
 		(pt 0 112)
 		(input)
-		(text "response_vga" (rect 0 0 57 12)(font "Arial" ))
-		(text "response_vga" (rect 21 107 78 119)(font "Arial" ))
-		(line (pt 0 112)(pt 16 112)(line_width 1))
+		(text "response_ctl[1..0]" (rect 0 0 69 12)(font "Arial" ))
+		(text "response_ctl[1..0]" (rect 21 107 90 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
 	)
 	(port
-		(pt 232 32)
+		(pt 0 128)
+		(input)
+		(text "response_vga" (rect 0 0 57 12)(font "Arial" ))
+		(text "response_vga" (rect 21 123 78 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
+	)
+	(port
+		(pt 240 32)
 		(output)
 		(text "active" (rect 0 0 23 12)(font "Arial" ))
-		(text "active" (rect 188 27 211 39)(font "Arial" ))
-		(line (pt 232 32)(pt 216 32)(line_width 1))
+		(text "active" (rect 196 27 219 39)(font "Arial" ))
+		(line (pt 240 32)(pt 224 32)(line_width 1))
 	)
 	(port
-		(pt 232 48)
+		(pt 240 48)
 		(output)
 		(text "coluna_out[2..0]" (rect 0 0 62 12)(font "Arial" ))
-		(text "coluna_out[2..0]" (rect 149 43 211 55)(font "Arial" ))
-		(line (pt 232 48)(pt 216 48)(line_width 3))
+		(text "coluna_out[2..0]" (rect 157 43 219 55)(font "Arial" ))
+		(line (pt 240 48)(pt 224 48)(line_width 3))
 	)
 	(port
-		(pt 232 64)
+		(pt 240 64)
 		(output)
 		(text "player_out[1..0]" (rect 0 0 61 12)(font "Arial" ))
-		(text "player_out[1..0]" (rect 150 59 211 71)(font "Arial" ))
-		(line (pt 232 64)(pt 216 64)(line_width 3))
+		(text "player_out[1..0]" (rect 158 59 219 71)(font "Arial" ))
+		(line (pt 240 64)(pt 224 64)(line_width 3))
 	)
 	(port
-		(pt 232 80)
+		(pt 240 80)
 		(output)
-		(text "coluna_signal" (rect 0 0 51 12)(font "Arial" ))
-		(text "coluna_signal" (rect 160 75 211 87)(font "Arial" ))
-		(line (pt 232 80)(pt 216 80)(line_width 1))
+		(text "coluna_signal[1..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "coluna_signal[1..0]" (rect 149 75 219 87)(font "Arial" ))
+		(line (pt 240 80)(pt 224 80)(line_width 3))
 	)
 	(port
-		(pt 232 96)
+		(pt 240 96)
 		(output)
 		(text "player_signal" (rect 0 0 51 12)(font "Arial" ))
-		(text "player_signal" (rect 160 91 211 103)(font "Arial" ))
-		(line (pt 232 96)(pt 216 96)(line_width 1))
+		(text "player_signal" (rect 168 91 219 103)(font "Arial" ))
+		(line (pt 240 96)(pt 224 96)(line_width 1))
 	)
 	(parameter
 		"idle"
@@ -117,7 +124,7 @@ agreement for further details.
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
-		"move"
+		"moveD"
 		"4"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
@@ -136,8 +143,13 @@ agreement for further details.
 		"7"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"moveE"
+		"8"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 216 128)(line_width 1))
+		(rectangle (rect 16 16 224 160)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 248 -64 348 16))
+	(annotation_block (parameter)(rect 256 -64 356 16))
 )
