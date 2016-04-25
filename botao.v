@@ -6,7 +6,7 @@ module botao(       reset,
                     player_signal,
                     clk,
                     mvE, // esquerda
-             		  mvD, //direita
+             		mvD, //direita
                     sel,
                     response_ctl,
                     response_vga
@@ -22,16 +22,15 @@ output reg          [1:0] player_out, coluna_signal;//modificado
  
 parameter           idle         = 0,
                     select       = 1,
-                   // check = 2,
                     change_p     = 3,
                     moveD        = 4,
                     waiting      = 5,
                     wait_vga_col = 6,
                     wait_vga_p   = 7,
-  						      moveE        = 8;
+  					moveE        = 8;
 						  
 						  
-reg					  guarda;
+reg					guarda;
 						  
 reg [2:0]           coluna_atual;
 reg [3:0]           state, next_state;
@@ -47,10 +46,8 @@ begin
         begin
           if (mvD == 0)
               next_state = moveD;
-				  
           else if (mvE == 0)
           		next_state = moveE;
-					
           else if (sel == 0)
               next_state = select;
           else
@@ -108,8 +105,9 @@ begin
     end
     else
     begin
-			guarda <= guarda;
+		guarda <= guarda;
         state <= next_state;
+        
         if(state == change_p)
         begin
             coluna_atual <= coluna_atual;
@@ -121,7 +119,7 @@ begin
       	//move direita
       	else if(state == moveD)
         begin
-	    guarda <= 1;
+	       guarda <= 1;
             player <= player;
             if(coluna_atual < 6)
                 coluna_atual <= coluna_atual + 1;
@@ -131,9 +129,9 @@ begin
       	//move esquerda
       	else if(state == moveE)
         begin
-	    guarda <= 0;
+            guarda <= 0;
             player <= player;
-          	if(coluna_atual > 0)
+            if(coluna_atual > 0)
                 coluna_atual <= coluna_atual - 1;
             else
                 coluna_atual <= 6;

@@ -93,8 +93,10 @@ begin
 				else
 					next_state = GEN_RESP;
 			end
-			else
+			else // se tem espaço
+			begin
 				next_state = CONFIG_WR;
+			end
 		end
 		//
 		CONFIG_WR: next_state = WAIT_WR;
@@ -380,6 +382,7 @@ begin
 		else if(state == IDLE)
 		begin
 			k <= 35;
+			fix <= 0;
 		end
 		//
 		else if(state == WAIT_RD)
@@ -557,9 +560,9 @@ begin
 			q = 0;
 			//if(vetor[coluna_atual + k] == 0) // da pra por
 			if(fix == 1)
-				response = 2'b10;
+				response = 2; // conseguiu colocar a peça
 			else
-				response = 2'b01;
+				response = 1; // não conseguiu colocar a peça
 			addr = 0;
 			rden = 0;
 			wren = 0;

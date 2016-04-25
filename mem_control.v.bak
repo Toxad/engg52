@@ -52,7 +52,7 @@ reg	[3:0]			next_state;
 
 ///////////////////////////////////////////////////
 
-//assign estado = state;
+assign estado = state;
 
 // decodificador de proximo estado
 always @ (*)
