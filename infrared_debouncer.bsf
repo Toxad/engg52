@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 152 128)
-	(text "infrared" (rect 5 0 35 12)(font "Arial" ))
-	(text "inst" (rect 8 96 20 108)(font "Arial" ))
+	(rect 16 16 192 160)
+	(text "infrared_debouncer" (rect 5 0 82 12)(font "Arial" ))
+	(text "inst" (rect 8 128 20 140)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -34,72 +34,71 @@ agreement for further details.
 	(port
 		(pt 0 48)
 		(input)
-		(text "E" (rect 0 0 7 12)(font "Arial" ))
-		(text "E" (rect 21 43 28 55)(font "Arial" ))
+		(text "cdleft" (rect 0 0 21 12)(font "Arial" ))
+		(text "cdleft" (rect 21 43 42 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "reset" (rect 0 0 20 12)(font "Arial" ))
-		(text "reset" (rect 21 59 41 71)(font "Arial" ))
+		(text "cdright" (rect 0 0 25 12)(font "Arial" ))
+		(text "cdright" (rect 21 59 46 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 1))
 	)
 	(port
-		(pt 136 32)
-		(output)
-		(text "w1" (rect 0 0 9 12)(font "Arial" ))
-		(text "w1" (rect 106 27 115 39)(font "Arial" ))
-		(line (pt 136 32)(pt 120 32)(line_width 1))
+		(pt 0 80)
+		(input)
+		(text "cdsel" (rect 0 0 20 12)(font "Arial" ))
+		(text "cdsel" (rect 21 75 41 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 1))
 	)
 	(port
-		(pt 136 48)
-		(output)
-		(text "w2" (rect 0 0 10 12)(font "Arial" ))
-		(text "w2" (rect 105 43 115 55)(font "Arial" ))
-		(line (pt 136 48)(pt 120 48)(line_width 1))
+		(pt 0 96)
+		(input)
+		(text "cdrst" (rect 0 0 20 12)(font "Arial" ))
+		(text "cdrst" (rect 21 91 41 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
 	)
 	(port
-		(pt 136 64)
+		(pt 176 32)
 		(output)
-		(text "w3" (rect 0 0 10 12)(font "Arial" ))
-		(text "w3" (rect 105 59 115 71)(font "Arial" ))
-		(line (pt 136 64)(pt 120 64)(line_width 1))
+		(text "deb_ir_left" (rect 0 0 42 12)(font "Arial" ))
+		(text "deb_ir_left" (rect 113 27 155 39)(font "Arial" ))
+		(line (pt 176 32)(pt 160 32)(line_width 1))
 	)
 	(port
-		(pt 136 80)
+		(pt 176 48)
 		(output)
-		(text "w4" (rect 0 0 11 12)(font "Arial" ))
-		(text "w4" (rect 104 75 115 87)(font "Arial" ))
-		(line (pt 136 80)(pt 120 80)(line_width 1))
+		(text "deb_ir_right" (rect 0 0 47 12)(font "Arial" ))
+		(text "deb_ir_right" (rect 108 43 155 55)(font "Arial" ))
+		(line (pt 176 48)(pt 160 48)(line_width 1))
+	)
+	(port
+		(pt 176 64)
+		(output)
+		(text "deb_ir_sel" (rect 0 0 41 12)(font "Arial" ))
+		(text "deb_ir_sel" (rect 114 59 155 71)(font "Arial" ))
+		(line (pt 176 64)(pt 160 64)(line_width 1))
+	)
+	(port
+		(pt 176 80)
+		(output)
+		(text "deb_ir_rst" (rect 0 0 41 12)(font "Arial" ))
+		(text "deb_ir_rst" (rect 114 75 155 87)(font "Arial" ))
+		(line (pt 176 80)(pt 160 80)(line_width 1))
 	)
 	(parameter
-		"idle"
+		"IDLE"
 		"0"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
-		"Recebe"
+		"WAIT"
 		"1"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"Aceita"
-		"2"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"Teste"
-		"3"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"Prolonga"
-		"4"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 120 96)(line_width 1))
+		(rectangle (rect 16 16 160 128)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 152 -64 252 16))
+	(annotation_block (parameter)(rect 192 -64 292 16))
 )

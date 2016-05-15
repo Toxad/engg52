@@ -1,0 +1,95 @@
+module infrared_debouncer(	clk,
+							cdleft,
+							cdright,
+							cdsel,
+							cdrst,
+							deb_ir_left,
+							deb_ir_right,
+							deb_ir_sel,
+							deb_ir_rst
+							);
+
+input 		cdleft, cdright, cdsel, cdrst, clk;
+output reg deb_ir_left,	deb_ir_right, deb_ir_sel, deb_ir_rst;
+
+reg 		state, next_state;
+parameter 	IDLE 	= 0,
+			WAIT 	= 1;
+
+always @(*)
+begin
+	case(state)
+	IDLE:
+	begin
+		if(cdleft == 0 || cdright == 0 || cdsel == 0 || cdrst == 0)
+			next_state = WAIT;
+		else
+			next_state = IDLE;
+	end
+	WAIT:
+	begin
+		if(cdleft == 0 || cdright == 0 || cdsel == 0 || cdrst == 0)
+			next_state = WAIT;
+		else
+			next_state = IDLE;
+	end
+	endcase
+end
+
+always @(posedge clk)
+begin
+	state <= next_state;
+end
+
+always @(*)
+begin
+	case(state)
+	IDLE:
+	begin
+		if(cdleft == 0)
+		begin
+			deb_ir_left = 0;
+			deb_ir_right = 1;
+			deb_ir_sel = 1;
+			deb_ir_rst = 1;
+		end
+		else if(cdright == 0)
+		begin
+			deb_ir_left = 1;
+			deb_ir_right = 0;
+			deb_ir_sel = 1;
+			deb_ir_rst = 1;
+		end
+		else if(cdsel == 0)
+		begin
+			deb_ir_left = 1;
+			deb_ir_right = 1;
+			deb_ir_sel = 0;
+			deb_ir_rst = 1;
+		end
+		else if(cdrst == 0)
+		begin
+			deb_ir_left = 1;
+			deb_ir_right = 1;
+			deb_ir_sel = 1;
+			deb_ir_rst = 0;
+		end
+		else
+		begin
+			deb_ir_left = 1;
+			deb_ir_right = 1;
+			deb_ir_sel = 1;
+			deb_ir_rst = 1;
+		end
+	end
+	default:
+	begin
+		deb_ir_left = 1;
+		deb_ir_right = 1;
+		deb_ir_sel = 1;
+		deb_ir_rst = 1;
+	end
+	endcase
+end
+
+endmodule
